@@ -13,6 +13,7 @@ def model_form_upload(request):
         photo = Document.objects.order_by("id").last()
         url = photo.photo
         gray(url)
+        photo.delete()
         return redirect('upload')
     else:
         form = DocumentForm()
