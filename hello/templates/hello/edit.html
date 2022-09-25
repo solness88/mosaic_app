@@ -1,0 +1,10 @@
+<body>
+  <img src="{{ data.photo.url }}" width="10%" height="10%" />
+
+  <form action="{% url 'edit' data.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="button_gray" value="gray">
+  </form>
+
+  <img src="{{ data.gray.url }}" width="10%" height="10%" />
+</body>

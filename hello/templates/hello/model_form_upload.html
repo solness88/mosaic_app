@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Upload</title>
+</head>
+
+<body>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+  </form>
+
+  {% for item in obj %}
+  <ul>
+    <li>{{ item.description }}</li>
+    <li>{{ item.document }}</li>
+    <li>{{ item.uploaded_at }}</li>
+  </ul>
+  {% endfor %}
+</body>
+
+</html>
