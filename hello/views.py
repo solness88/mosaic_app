@@ -12,12 +12,16 @@ def model_form_upload(request):
             form.save()
         photo = Document.objects.order_by("id").last()
         url = photo.photo
-        print(photo.picture_type)
-        if photo.picture_type == 'black_white':
+        picture_type = photo.picture_type
+        if picture_type == 'black_white':
             gray(url)
-        if photo.picture_type == 'mosaic':
+        elif picture_type == 'mosaic':
             mosaic(url)
+        elif picture_type == 'sepia':
+            sepia(url)
         photo.delete()
+        print(settings.BASE_DIR)
+        print("こんにちは！")
         return redirect('upload')
     else:
         form = DocumentForm()
@@ -40,3 +44,12 @@ def mosaic(url):
     img_mosaic = cv2.resize(small, img.shape[:2][::-1])
     output = settings.MEDIA_ROOT + "/gallery/gray" + str(timezone.now()) + ".jpg"
     cv2.imwrite(output, img_mosaic)
+
+def sepia(url):
+    path = settings.MEDIA_ROOT + "/" + str(url)
+    img = cv2.imread(path) 
+    img[:,:,(0)] = img[:,:,(0)] * 0.3
+    img[:,:,(1)] = img[:,:,(1)] * 0.8
+    img[:,:,(2)] = img[:,:,(2)]
+    output = settings.MEDIA_ROOT + "/gallery/SEPIA)" + str(timezone.now()) + ".jpg"
+    cv2.imwrite(output,img) 

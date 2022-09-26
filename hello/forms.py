@@ -4,6 +4,7 @@ from .models import Document
 class DocumentForm(forms.ModelForm):
     Picture_Type = (
         ("black_white", "白黒"),
+        ("sepia", "セピア色"),
         ("mosaic", "モザイク"),
     )
     picture_type = forms.ChoiceField(choices=Picture_Type, label='', widget=forms.RadioSelect)
