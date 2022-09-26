@@ -2,10 +2,9 @@ from distutils.command.upload import upload
 from django.db import models
 
 class Document(models.Model):
-    description = models.CharField(max_length=255, blank=True)
     photo = models.ImageField(upload_to='gallery/', default='SOME STRING')
+    picture_type = models.CharField(max_length=100, default='black_white')
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    gray = models.ImageField(default='Not Set')
 
     def __str__(self):
-        return self.photo
+        return self.photo, self.picture_type
