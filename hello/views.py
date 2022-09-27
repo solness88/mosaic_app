@@ -4,6 +4,11 @@ from .models import Document
 import cv2
 from django.conf import settings
 from django.utils import timezone
+import glob
+from django.http import FileResponse
+import os
+# from pathlib import Path
+
 
 def model_form_upload(request):
     if request.method == 'POST':
@@ -19,32 +24,42 @@ def model_form_upload(request):
             mosaic(url)
         elif picture_type == 'sepia':
             sepia(url)
+        # file_name = glob.glob('./media/gallery/*')
+        # print('こんにちは！')
+        # print(file_name)
         photo.delete()
-        print(settings.BASE_DIR)
-        print("こんにちは！")
-        return redirect('upload')
+        return redirect('file_download')
     else:
         form = DocumentForm()
     return render(request, 'hello/model_form_upload.html', {
         'form': form
     })
 
+
+def file_download(request):
+    file_path = glob.glob('./media/gallery/*')
+    file_name = os.path.basename(file_path[0])
+    return FileResponse(open(file_path[0], "rb"), as_attachment=True, filename=file_name)
+
+
+# convert into gray-color
 def gray(url):
     path = settings.MEDIA_ROOT + "/" + str(url)
     img = cv2.imread(path)
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    output = settings.MEDIA_ROOT + "/gallery/gray" + str(timezone.now()) + ".jpg"
+    output = settings.MEDIA_ROOT + "/gallery/GRAY)" + str(timezone.now()) + ".jpg"
     cv2.imwrite(output, img_gray)
-    #cv2.imshow("gray_image", img_gray)
 
+# convert into mosaic
 def mosaic(url):
     path = settings.MEDIA_ROOT + "/" + str(url)
     img = cv2.imread(path)
     small = cv2.resize(img, None, fx=0.1, fy=0.1)
     img_mosaic = cv2.resize(small, img.shape[:2][::-1])
-    output = settings.MEDIA_ROOT + "/gallery/gray" + str(timezone.now()) + ".jpg"
+    output = settings.MEDIA_ROOT + "/gallery/MOSAIC)" + str(timezone.now()) + ".jpg"
     cv2.imwrite(output, img_mosaic)
 
+# convert into sepia
 def sepia(url):
     path = settings.MEDIA_ROOT + "/" + str(url)
     img = cv2.imread(path) 

@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('upload', views.model_form_upload, name='upload'),
-    #path('confirm', views.confirm, name='confirm'),
+    path('file_download', views.file_download, name='file_download'),
 ]
