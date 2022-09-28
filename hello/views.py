@@ -7,11 +7,11 @@ from django.utils import timezone
 import glob
 from django.http import FileResponse
 import os
-# from pathlib import Path
-
 
 def model_form_upload(request):
+    print('①こんにちは！')
     if request.method == 'POST':
+        print('②こんにちは！')
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -24,23 +24,32 @@ def model_form_upload(request):
             mosaic(url)
         elif picture_type == 'sepia':
             sepia(url)
-        # file_name = glob.glob('./media/gallery/*')
-        # print('こんにちは！')
-        # print(file_name)
         photo.delete()
+        print('③こんにちは！')
         return redirect('file_download')
     else:
         form = DocumentForm()
+
+    # remove file that is already downloaded
+    altered_pic_dir = os.listdir('./media/gallery/')
+    if len(altered_pic_dir) != 0:
+        print('④こんにちは！！')
+        print(altered_pic_dir)
+        for f in altered_pic_dir:
+            os.remove(os.path.join('./media/gallery/', f))
+
+    #print('おばんです！！')
+
     return render(request, 'hello/model_form_upload.html', {
         'form': form
     })
 
-
+#download files
 def file_download(request):
+    print('⑤こんにちは！！')
     file_path = glob.glob('./media/gallery/*')
     file_name = os.path.basename(file_path[0])
     return FileResponse(open(file_path[0], "rb"), as_attachment=True, filename=file_name)
-
 
 # convert into gray-color
 def gray(url):
