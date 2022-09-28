@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('upload', views.model_form_upload, name='upload'),
-    path('file_download', views.file_download, name='file_download'),
-    path('download_complete', views.download_complete, name='download_complete'),
+    path('gray', views.gray, name='gray'),
+    path('sepia', views.sepia, name='sepia'),
+    path('mosaic', views.mosaic, name='mosaic'),
 ]
