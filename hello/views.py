@@ -39,19 +39,46 @@ def show_alternatives(request):
     path = settings.MEDIA_ROOT + "/" + str(url)
     original_pic_name = os.path.basename(path)
     img = cv2.imread(path)
+
+    # process original image into gray
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # process original image into mosaic
+    small = cv2.resize(img, None, fx=0.05, fy=0.05)
+    img_mosaic = cv2.resize(small, img.shape[:2][::-1])
+
+    # process original image into sepia
+    img_sepia = img
+    img_sepia[:,:,(0)] = img_sepia[:,:,(0)] * 0.3
+    img_sepia[:,:,(1)] = img_sepia[:,:,(1)] * 0.8
+    img_sepia[:,:,(2)] = img_sepia[:,:,(2)]
+
+
+
+
     random_num = random.randint(1000000000, 9999999999)
-    processed_pic_path = settings.MEDIA_ROOT + "/gallery/【BLACKWHITE】" + original_pic_name + str(random_num) + ".jpg"
-    cv2.imwrite(processed_pic_path, img_gray)
-    processed_pic = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_path)
-    original_pic = settings.MEDIA_URL + str(url)
+    processed_pic_gray = settings.MEDIA_ROOT + "/gallery/【BLACKWHITE】" + original_pic_name + str(random_num) + ".jpg"
+    processed_pic_sepia = settings.MEDIA_ROOT + "/gallery/【SEPIA】" + original_pic_name + str(random_num) + ".jpg"
+    processed_pic_mosaic = settings.MEDIA_ROOT + "/gallery/【MOSAIC】" + original_pic_name + str(random_num) + ".jpg"
+
+    # imwrite processed images
+    cv2.imwrite(processed_pic_gray, img_gray)
+    cv2.imwrite(processed_pic_sepia, img_sepia)
+    cv2.imwrite(processed_pic_mosaic, img_mosaic)
+
+    photo.delete()
+    #original_pic = settings.MEDIA_URL + str(url)
+    gray_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_gray)
+    sepia_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_sepia)
+    mosaic_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_mosaic)
+
     context = {
-        'processed_pic': processed_pic,
-        'original_pic': original_pic,
+        'gray_pic_name': gray_pic_name,
+        'sepia_pic_name': sepia_pic_name,
+        'mosaic_pic_name': mosaic_pic_name,
+        #'original_pic': original_pic,
     }
     return render(request, 'hello/show_alternatives.html', context)
-
-
 
 
 #download files
@@ -81,9 +108,6 @@ def show_alternatives(request):
 #         cv2.imwrite(output, img_mosaic)
 #         photo.delete()
 #         file_name = os.path.basename(output)
-#         return FileResponse(open(output, "rb"), as_attachment=True, filename=file_name)
-
-# convert into sepia
 # def sepia(request):
 #     with TemporaryDirectory() as tempdir:
 #         photo = Document.objects.order_by("id").last()
