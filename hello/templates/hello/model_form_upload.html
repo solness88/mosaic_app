@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'hello/style.css' %}">
+
 
 <head>
   <meta charset="UTF-8">
@@ -13,6 +15,8 @@
     {{ form.as_p }}
     <button type="submit">Upload</button>
   </form>
+  <img src="/media/gallery/hiro.png" alt="aaa">
+  <p class="hello">こんにちは</p>
 
 
 </body>
