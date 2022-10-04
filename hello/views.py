@@ -8,26 +8,24 @@ from django.conf import settings
 from django.utils import timezone
 from django.http import FileResponse
 import os
-from tempfile import TemporaryDirectory
 import random
 import numpy as np
-import copy
+import datetime
 
 def model_form_upload(request):
+
+    # DIR = settings.MEDIA_ROOT + "/gallery/"
+    # pic_amount = sum(os.path.isfile(os.path.join(DIR, name)) for name in os.listdir(DIR))
+    # if pic_amount > 30:
+    #     for file in os.scandir(DIR):
+    #         os.remove(file.path)     
+
+
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('show_alternatives')
-        # photo = Document.objects.order_by("id").last()
-        # url = photo.photo
-        # picture_type = photo.picture_type
-        # if picture_type == 'black_white':
-        #     return redirect('gray')
-        # elif picture_type == 'mosaic':
-        #     return redirect('mosaic')
-        # elif picture_type == 'sepia':
-        #     return redirect('sepia')
 
     else:
         form = DocumentForm()
@@ -53,19 +51,15 @@ def show_alternatives(request):
 
     # process original image into sepia
     img_sepia = sepia(img)
-    # img_sepia = copy.copy(img)
-    # img_sepia[:,:,(0)] = img_sepia[:,:,(0)] * 0.3
-    # img_sepia[:,:,(1)] = img_sepia[:,:,(1)] * 0.8
-    # img_sepia[:,:,(2)] = img_sepia[:,:,(2)]
 
+    # get current_time
+    now = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
 
-
-
-    random_num = random.randint(1000000000, 9999999999)
-    processed_pic_gray = settings.MEDIA_ROOT + "/gallery/【BLACKWHITE】" + original_pic_name + str(timezone.now()) + ".jpg"
-    processed_pic_sepia = settings.MEDIA_ROOT + "/gallery/【SEPIA】" + original_pic_name + str(random_num) + ".jpg"
-    processed_pic_mosaic = settings.MEDIA_ROOT + "/gallery/【MOSAIC】" + original_pic_name + str(random_num) + ".jpg"
-    processed_pic_pixel = settings.MEDIA_ROOT + "/gallery/【PIXEL】" + original_pic_name + str(random_num) + ".jpg"
+    first_falf_path = settings.MEDIA_ROOT + "/gallery/" + now
+    processed_pic_gray = first_falf_path + "【BLACKWHITE】" + original_pic_name
+    processed_pic_sepia = first_falf_path + "【SEPIA】" + original_pic_name
+    processed_pic_mosaic = first_falf_path + "【MOSAIC】" + original_pic_name
+    processed_pic_pixel = first_falf_path + "【PIXEL】" + original_pic_name
 
     # imwrite processed images
     cv2.imwrite(processed_pic_gray, img_gray)
