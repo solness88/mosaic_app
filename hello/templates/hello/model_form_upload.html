@@ -1,24 +1,15 @@
+{% extends 'hello/base.html' %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'hello/style.css' %}">
 
+{% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Upload</title>
-</head>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Upload</button>
+</form>
+<img src="{% static '/hello/images/camera.png' %}" alt="aaa">
+<p class="hello">こんにちは</p>
 
-<body>
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
-  <img src="/media/gallery/hiro.png" alt="aaa">
-  <p class="hello">こんにちは</p>
-
-
-</body>
-
-</html>
+{% endblock %}

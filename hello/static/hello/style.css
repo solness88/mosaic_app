@@ -1,3 +1,10 @@
-.hello{
+.navbar-brand{
+  font-size: 3rem;
   color:red;
 }
+
+.panda{
+  width:4.5rem;
+  height:auto;
+}
+
