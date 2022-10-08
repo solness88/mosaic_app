@@ -2,16 +2,16 @@ from django import forms
 from .models import Document
 
 class DocumentForm(forms.ModelForm):
-    Picture_Type = (
-        ("black_white", "白黒"),
-        ("sepia", "セピア色"),
-        ("mosaic", "モザイク"),
-    )
-    picture_type = forms.ChoiceField(choices=Picture_Type, label='', widget=forms.RadioSelect)
+    # Picture_Type = (
+    #     ("black_white", "白黒"),
+    #     ("sepia", "セピア色"),
+    #     ("mosaic", "モザイク"),
+    # )
+    # picture_type = forms.ChoiceField(choices=Picture_Type, label='', widget=forms.RadioSelect)
 
     class Meta:
       model = Document
-      fields = ('photo','picture_type')
+      fields = ('photo',)
 
 # class DocumentForm(forms.Form):
 #   photo = forms.ImageField(label="動画を選択")
