@@ -8,7 +8,7 @@ def gray(img):
 
 # process original image into mosaic
 def mosaic(img):
-    small = cv2.resize(img, None, fx=0.05, fy=0.05)
+    small = cv2.resize(img, None, fx=0.1, fy=0.1)
     return cv2.resize(small, img.shape[:2][::-1])
 
 # process original image into dotted_animation
@@ -32,9 +32,20 @@ def mosaic_blur(img, alpha):
     return img
 # until here: process original image into dotted_animation
 
+# sepia color
 def sepia(img):
     img_sepia = copy.copy(img)
     img_sepia[:,:,(0)] = img_sepia[:,:,(0)] * 0.3
     img_sepia[:,:,(1)] = img_sepia[:,:,(1)] * 0.8
     img_sepia[:,:,(2)] = img_sepia[:,:,(2)]
     return img_sepia
+
+# edge-preserving effect
+def edge_preserving(img):
+    edge_preserving = cv2.edgePreservingFilter(img, flags=1, sigma_s=70, sigma_r=0.6)
+    return edge_preserving
+
+# oil-painting effect
+def oil_painting(img):
+    oil_painting = cv2.xphoto.oilPainting(img, 3, 1)
+    return oil_painting

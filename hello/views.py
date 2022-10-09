@@ -47,6 +47,13 @@ def show_alternatives(request):
     # process original image into sepia
     img_sepia = functions.sepia(img)
 
+    # process original image into edgepreserving
+    img_edgepreserving = functions.edge_preserving(img)
+
+    # process original image into like oil-painting
+    img_oilpainting = functions.oil_painting(img)
+
+
     # get current_time
     now = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
 
@@ -55,12 +62,16 @@ def show_alternatives(request):
     processed_pic_sepia = first_falf_path + "【SEPIA】" + original_pic_name
     processed_pic_mosaic = first_falf_path + "【MOSAIC】" + original_pic_name
     processed_pic_pixel = first_falf_path + "【PIXEL】" + original_pic_name
+    processed_pic_oilpainting = first_falf_path + "【OIL】" + original_pic_name
+    processed_pic_edgepreserving = first_falf_path + "【EDGE】" + original_pic_name
 
     # imwrite processed images
     cv2.imwrite(processed_pic_gray, img_gray)
     cv2.imwrite(processed_pic_sepia, img_sepia)
     cv2.imwrite(processed_pic_mosaic, img_mosaic)
     cv2.imwrite(processed_pic_pixel, img_pixel)
+    cv2.imwrite(processed_pic_oilpainting, img_oilpainting)
+    cv2.imwrite(processed_pic_edgepreserving, img_edgepreserving)
 
     photo.delete()
     #original_pic = settings.MEDIA_URL + str(url)
@@ -68,11 +79,15 @@ def show_alternatives(request):
     sepia_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_sepia)
     mosaic_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_mosaic)
     pixel_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_pixel)
+    oilpainting_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilpainting)
+    edgepreserving_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_edgepreserving)
 
     context = {
         'gray_pic_name': gray_pic_name,
         'sepia_pic_name': sepia_pic_name,
         'mosaic_pic_name': mosaic_pic_name,
         'pixel_pic_name': pixel_pic_name,
+        'oilpainting_pic_name': oilpainting_pic_name,
+        'edgepreserving_pic_name': edgepreserving_pic_name,
     }
     return render(request, 'hello/show_alternatives.html', context)
