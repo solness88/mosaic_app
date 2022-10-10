@@ -49,3 +49,7 @@ def edge_preserving(img):
 def oil_painting(img):
     oil_painting = cv2.xphoto.oilPainting(img, 3, 1)
     return oil_painting
+
+def detail_enhance(img):
+    return cv2.detailEnhance(img, sigma_s=10, sigma_r=0.15)
+

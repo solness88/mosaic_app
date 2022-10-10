@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from mosaic_app.settings import BASE_DIR, MEDIA_ROOT, MEDIA_URL
 from .forms import DocumentForm
 from .models import Document
-import cv2, os, datetime, sys
+import cv2, os, datetime, sys, shutil
 from django.conf import settings
 sys.path.append('./hello/')
 import functions
@@ -53,6 +53,8 @@ def show_alternatives(request):
     # process original image into like oil-painting
     img_oilpainting = functions.oil_painting(img)
 
+    # process original picture into detail-enhanced
+    img_detailEnhanced = functions.detail_enhance(img)
 
     # get current_time
     now = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
@@ -64,6 +66,7 @@ def show_alternatives(request):
     processed_pic_pixel = first_falf_path + "【PIXEL】" + original_pic_name
     processed_pic_oilpainting = first_falf_path + "【OIL】" + original_pic_name
     processed_pic_edgepreserving = first_falf_path + "【EDGE】" + original_pic_name
+    processed_pic_detailEnhanced = first_falf_path + "【DETAIL】" + original_pic_name
 
     # imwrite processed images
     cv2.imwrite(processed_pic_gray, img_gray)
@@ -72,22 +75,30 @@ def show_alternatives(request):
     cv2.imwrite(processed_pic_pixel, img_pixel)
     cv2.imwrite(processed_pic_oilpainting, img_oilpainting)
     cv2.imwrite(processed_pic_edgepreserving, img_edgepreserving)
+    cv2.imwrite(processed_pic_detailEnhanced, img_detailEnhanced)
 
-    photo.delete()
-    #original_pic = settings.MEDIA_URL + str(url)
+    shutil.copy(settings.MEDIA_ROOT + "/" + str(url), '/Users/hirokoba/workspace/mosaic_app/media/gallery/' + now + "【ORIGINAL】" + original_pic_name, )
+
+    #original_pic_rename = os.rename(path, settings.MEDIA_URL + 'gallery/' + now + "【ORIGINAL】" + original_pic_name)
+    original_pic = settings.MEDIA_URL + 'gallery/' + original_pic_name
     gray_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_gray)
     sepia_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_sepia)
     mosaic_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_mosaic)
     pixel_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_pixel)
     oilpainting_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilpainting)
     edgepreserving_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_edgepreserving)
+    detailEnhanced_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_detailEnhanced)
+
+    print(path)
 
     context = {
+        'original_pic': original_pic,
         'gray_pic_name': gray_pic_name,
         'sepia_pic_name': sepia_pic_name,
         'mosaic_pic_name': mosaic_pic_name,
         'pixel_pic_name': pixel_pic_name,
         'oilpainting_pic_name': oilpainting_pic_name,
         'edgepreserving_pic_name': edgepreserving_pic_name,
+        'detailEnhanced_pic_name': detailEnhanced_pic_name,
     }
     return render(request, 'hello/show_alternatives.html', context)

@@ -1,6 +1,5 @@
 .navbar-brand{
   font-size: 3rem;
-  color:red;
 }
 
 .panda{
@@ -8,3 +7,16 @@
   height:auto;
 }
 
+.thumbnail{
+  overflow: hidden;
+}
+
+.thumbnail_pic{
+  width:18rem;
+  height:auto;
+}
+
+.thumbnail_pic:hover{
+  transform: scale(1.5);
+  transition-duration: 0.5s;
+}
