@@ -7,9 +7,49 @@
 <div class="container-fluid">
       <div class="row">
             <div class="justify-content-center d-flex flex-wrap col">
-                  <div class="m-3 thumbnail"><a href="{{ original_pic }}" download="{{ original_pic }}"><img
-                                    class="thumbnail_pic" src="{{ original_pic }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="オリジナル画像"></a></div>
+
+
+
+                  <!-- Button trigger modal -->
+                  <div class="m-3 thumbnail">
+                        <a href="{{ original_pic }}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              <img class="thumbnail_pic" src="{{ original_pic }}" alt="qqq" data-bs-toggle="tooltip"
+                                    data-bs-html="true" title="オリジナル画像">
+                        </a>
+                  </div>
+
+
+
+                  <!-- Modal【NORMAL】-->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                          <img src="{{ original_pic }}" alt="qqq">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+
+
+
+
+
+
+
                   <div class="m-3 thumbnail"><a href="{{ gray_pic_name }}" download="{{ gray_pic_name }}"><img
                                     class="thumbnail_pic" src="{{ gray_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
                                     data-bs-html="true" title="モノクロ"></a></div>
