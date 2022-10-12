@@ -60,6 +60,7 @@ def show_alternatives(request):
     now = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
 
     first_falf_path = settings.MEDIA_ROOT + "/gallery/" + now
+    original_pic_copy = first_falf_path + "【ORIGINAL】" + original_pic_name
     processed_pic_gray = first_falf_path + "【BLACKWHITE】" + original_pic_name
     processed_pic_sepia = first_falf_path + "【SEPIA】" + original_pic_name
     processed_pic_mosaic = first_falf_path + "【MOSAIC】" + original_pic_name
@@ -80,7 +81,7 @@ def show_alternatives(request):
     shutil.copy(settings.MEDIA_ROOT + "/" + str(url), '/Users/hirokoba/workspace/mosaic_app/media/gallery/' + now + "【ORIGINAL】" + original_pic_name, )
 
     #original_pic_rename = os.rename(path, settings.MEDIA_URL + 'gallery/' + now + "【ORIGINAL】" + original_pic_name)
-    original_pic = settings.MEDIA_URL + 'gallery/' + original_pic_name
+    original_pic = settings.MEDIA_URL + 'gallery/' + os.path.basename(original_pic_copy)
     gray_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_gray)
     sepia_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_sepia)
     mosaic_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_mosaic)
@@ -88,8 +89,6 @@ def show_alternatives(request):
     oilpainting_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilpainting)
     edgepreserving_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_edgepreserving)
     detailEnhanced_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_detailEnhanced)
-
-    print(path)
 
     context = {
         'original_pic': original_pic,
@@ -101,4 +100,7 @@ def show_alternatives(request):
         'edgepreserving_pic_name': edgepreserving_pic_name,
         'detailEnhanced_pic_name': detailEnhanced_pic_name,
     }
+
+    photo.delete()
+
     return render(request, 'hello/show_alternatives.html', context)
