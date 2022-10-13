@@ -12,9 +12,16 @@ def mosaic(img):
     return cv2.resize(small, img.shape[:2][::-1])
 
 # process original image into dotted_animation
+
+
 def pixel_art(img, alpha=2, K=4):
-    img = mosaic_blur(img, alpha)
-    return sub_color(img, K)
+    gamma = 2
+    gamma_cvt = np.zeros((256,1),dtype = 'uint8')
+    for i in range(256):
+        gamma_cvt[i][0] = 255*(float(i)/255)**(1.0/gamma)
+    gamma_img = cv2.LUT(img,gamma_cvt)
+    pixel_art_img = mosaic_blur(gamma_img, alpha)
+    return sub_color(pixel_art_img, K)
 
 def sub_color(src, K):
     Z = src.reshape((-1,3))
@@ -53,3 +60,10 @@ def oil_painting(img):
 def detail_enhance(img):
     return cv2.detailEnhance(img, sigma_s=10, sigma_r=0.15)
 
+def water_color(img):
+    gamma = 1.5
+    gamma_cvt = np.zeros((256,1),dtype = 'uint8')
+    for i in range(256):
+        gamma_cvt[i][0] = 255*(float(i)/255)**(1.0/gamma)
+    img_gamma = cv2.LUT(img,gamma_cvt)
+    return cv2.stylization(img_gamma, sigma_s=60, sigma_r=0.6)

@@ -6,4 +6,4 @@ from django.conf import settings
 urlpatterns = [
     path('upload', views.model_form_upload, name='upload'),
     path('show_alternatives', views.show_alternatives, name='show_alternatives')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

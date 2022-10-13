@@ -124,6 +124,10 @@ STATIC_URL = 'static/'
 #     os.path.join(BASE_DIR, "static"),
 # )
 
+# デプロイ用に静的ファイルを収集するディレクトリを指定（開発環境では不要なのでコメントアウト）
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

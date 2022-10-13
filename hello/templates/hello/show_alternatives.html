@@ -84,7 +84,7 @@
 
                                     <!-- Modal【BLACK AND WHITE】 content-->
                                     <div class="modal-body container">
-                                          <div class="d-flex justify-content-between">
+                                          <div class="d-flex justify-content-around">
                                                 <div class="m-1">
                                                       <img src="{{ original_pic }}" alt="qqq"
                                                             class="thumbnail_pic_modal">
@@ -436,6 +436,71 @@
                         </div>
                   </div>
                   <!-- thumbnail pic 【PIXEL_PIC_NAME】end -->
+
+                  <!-- thumbnail pic【WATERCOLOR】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ watercolor_pic_name }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_watercolor">
+                                    <img class="thumbnail_pic" src="{{ watercolor_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>WATERCOLOR</div>
+                              <div><a href="{{ watercolor_pic_name }}" download="{{ watercolor_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【WATERCOLOR】-->
+                  <div class="modal fade" id="Modal_watercolor" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【WATERCOLOR】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">ORIGINAL
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ watercolor_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  WATERCOLOR
+                                                            </div>
+                                                            <div><a href="{{ watercolor_pic_name }}"
+                                                                        download="{{ watercolor_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【WATERCOLOR】end -->
+
 
                   <div class="m-3 thumbnail"><a href="{{ pixel_pic_name }}" download="{{ pixel_pic_name }}"><img
                                     class="thumbnail_pic" src="{{ pixel_pic_name }}" alt="qqq"></a></div>

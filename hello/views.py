@@ -15,7 +15,7 @@ def model_form_upload(request):
     pic_amount = sum(os.path.isfile(os.path.join(DIR, name)) for name in os.listdir(DIR))
     if pic_amount > 10:
         for file in os.scandir(DIR):
-            os.remove(file.path)     
+            os.remove(file.path)
 
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -56,6 +56,10 @@ def show_alternatives(request):
     # process original picture into detail-enhanced
     img_detailEnhanced = functions.detail_enhance(img)
 
+    img_watercolor = functions.water_color(img)
+
+    #img_manga = functions.manga(img)
+
     # get current_time
     now = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
 
@@ -68,6 +72,8 @@ def show_alternatives(request):
     processed_pic_oilpainting = first_falf_path + "【OIL】" + original_pic_name
     processed_pic_edgepreserving = first_falf_path + "【EDGE】" + original_pic_name
     processed_pic_detailEnhanced = first_falf_path + "【DETAIL】" + original_pic_name
+    processed_pic_watercolor = first_falf_path + "【WATERCOLOR】" + original_pic_name
+    #processed_pic_manga = first_falf_path + "【MANGA】" + original_pic_name
 
     # imwrite processed images
     cv2.imwrite(processed_pic_gray, img_gray)
@@ -77,6 +83,8 @@ def show_alternatives(request):
     cv2.imwrite(processed_pic_oilpainting, img_oilpainting)
     cv2.imwrite(processed_pic_edgepreserving, img_edgepreserving)
     cv2.imwrite(processed_pic_detailEnhanced, img_detailEnhanced)
+    cv2.imwrite(processed_pic_watercolor, img_watercolor)
+    #cv2.imwrite(processed_pic_manga, img_manga)
 
     shutil.copy(settings.MEDIA_ROOT + "/" + str(url), '/Users/hirokoba/workspace/mosaic_app/media/gallery/' + now + "【ORIGINAL】" + original_pic_name, )
 
@@ -89,6 +97,8 @@ def show_alternatives(request):
     oilpainting_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilpainting)
     edgepreserving_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_edgepreserving)
     detailEnhanced_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_detailEnhanced)
+    watercolor_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_watercolor)
+    #manga_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_manga)
 
     context = {
         'original_pic': original_pic,
@@ -99,6 +109,8 @@ def show_alternatives(request):
         'oilpainting_pic_name': oilpainting_pic_name,
         'edgepreserving_pic_name': edgepreserving_pic_name,
         'detailEnhanced_pic_name': detailEnhanced_pic_name,
+        'watercolor_pic_name': watercolor_pic_name,
+        #'manga_pic_name': manga_pic_name,
     }
 
 
