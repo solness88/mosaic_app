@@ -101,6 +101,5 @@ def show_alternatives(request):
         'detailEnhanced_pic_name': detailEnhanced_pic_name,
     }
 
-    photo.delete()
 
     return render(request, 'hello/show_alternatives.html', context)

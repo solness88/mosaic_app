@@ -39,12 +39,12 @@
                                     <div class="modal-body container">
                                           <div class="d-flex justify-content-around">
                                                 <img src="{{ original_pic }}" alt="qqq" class="m-1 thumbnail_pic_modal">
-                                                <img src="{{ pixel_pic_name }}" alt="qqq"
+                                                <img src="{{ oilpainting_pic_name }}" alt="qqq"
                                                       class="m-1 thumbnail_pic_modal">
                                           </div>
                                           <div class="d-flex justify-content-around">
-                                                <p class="p-2 mt-2 bg-primary text-white rounded">Original</p>
-                                                <p class="p-2 mt-2 bg-primary text-white rounded">Original</p>
+                                                <p class="p-2 mt-2 bg-primary text-white rounded">ORIGINAL</p>
+                                                <p class="p-2 mt-2 bg-primary text-white rounded">ORIGINAL</p>
                                           </div>
                                     </div>
 
@@ -52,45 +52,391 @@
                               </div>
                         </div>
                   </div>
+                  <!-- thumbnail pic 【NORMAL】end -->
+
+                  <!-- thumbnail pic 【BLACK AND WHITE】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ gray_pic_name }}" data-bs-toggle="modal" data-bs-target="#Modal_blackwhite">
+                                    <img class="thumbnail_pic" src="{{ gray_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>BLACK AND WHITE</div>
+                              <div><a href="{{ gray_pic_name }}" download="{{ gray_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【BLACK AND WHITE】-->
+                  <div class="modal fade" id="Modal_blackwhite" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">;;
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【BLACK AND WHITE】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">Original
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ gray_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">BLACK
+                                                                  AND
+                                                                  WHITE
+                                                            </div>
+                                                            <div><a href="{{ gray_pic_name }}"
+                                                                        download="{{ gray_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
 
 
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic【BLACK AND WHITE】end -->
 
+                  <!-- thumbnail pic【SEPIA】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ sepia_pic_name }}" data-bs-toggle="modal" data-bs-target="#Modal_sepia">
+                                    <img class="thumbnail_pic" src="{{ sepia_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>SEPIA</div>
+                              <div><a href="{{ sepia_pic_name }}" download="{{ sepia_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
 
+                  <!-- Modal【SEPIA】-->
+                  <div class="modal fade" id="Modal_sepia" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">;;
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
 
+                                    <!-- Modal【SEPIA】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">Original
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ sepia_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">SEPIA
+                                                            </div>
+                                                            <div><a href="{{ sepia_pic_name }}"
+                                                                        download="{{ sepia_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【SEPIA】end -->
 
+                  <!-- thumbnail pic【OILPAINTING】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ oilpainting_pic_name }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_oilpanting">
+                                    <img class="thumbnail_pic" src="{{ oilpainting_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>OILPAINTING</div>
+                              <div><a href="{{ oilpainting_pic_name }}" download="{{ oilpainting_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
 
+                  <!-- Modal【OILPAINTING】-->
+                  <div class="modal fade" id="Modal_oilpanting" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
 
-                  <div class="m-3 thumbnail"><a href="{{ gray_pic_name }}" download="{{ gray_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ gray_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="モノクロ"></a></div>
-                  <div class="m-3 thumbnail"><a href=" {{ sepia_pic_name }}" download="{{ sepia_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ sepia_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="セピア"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ mosaic_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="モザイク"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ mosaic_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="モザイク"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ mosaic_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="モザイク"></a></div>
-                  <!-- 
+                                    <!-- Modal【OILPAINTING】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">Original
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ oilpainting_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  OILPAINTING
+                                                            </div>
+                                                            <div><a href="{{ oilpainting_pic_name }}"
+                                                                        download="{{ oilpainting_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【OILPAINTING】end -->
 
-            </div>
-      </div>
-      <div class="row">
-            <div class="justify-content-center d-flex flex-wrap col"> -->
-                  <div class="m-3 thumbnail"><a href="{{ oilpainting_pic_name }}"
-                              download="{{ oilpainting_pic_name }}"><img class="thumbnail_pic"
-                                    src="{{ oilpainting_pic_name }}" alt="qqq" data-bs-toggle="tooltip"
-                                    data-bs-html="true" title="油絵風"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ edgepreserving_pic_name }}"
-                              download="{{ edgepreserving_pic_name }}"><img class="thumbnail_pic"
-                                    src="{{ edgepreserving_pic_name }}" alt="qqq"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ detailEnhanced_pic_name }}"
-                              download="{{ detailEnhanced_pic_name }}"><img class="thumbnail_pic"
-                                    src="{{ detailEnhanced_pic_name }}" alt="qqq"></a></div>
+                  <!-- thumbnail pic【EDGE_PRESERVING】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ edgepreserving_pic_name }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_edge">
+                                    <img class="thumbnail_pic" src="{{ edgepreserving_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>EDGE</div>
+                              <div><a href="{{ edgepreserving_pic_name }}" download="{{ edgepreserving_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【EDGE_PRESERVING】-->
+                  <div class="modal fade" id="Modal_edge" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【EDGE_PRESERVING】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">Original
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ edgepreserving_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  EDGE
+                                                            </div>
+                                                            <div><a href="{{ edgepreserving_pic_name }}"
+                                                                        download="{{ edgepreserving_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【EDGE_PRESERVING】end -->
+
+                  <!-- thumbnail pic【DETAIL_ENHANCED】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ detailEnhanced_pic_name }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_detail">
+                                    <img class="thumbnail_pic" src="{{ detailEnhanced_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>DETAILED</div>
+                              <div><a href="{{ detailEnhanced_pic_name }}" download="{{ detailEnhanced_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【DETAIL_ENHANCED】-->
+                  <div class="modal fade" id="Modal_detail" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【DETAIL_ENHANCED】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">ORIGINAL
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ detailEnhanced_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  DETAILED
+                                                            </div>
+                                                            <div><a href="{{ detailEnhanced_pic_name }}"
+                                                                        download="{{ detailEnhanced_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【DETAIL_ENHANCED】end -->
+
+                  <!-- thumbnail pic【PIXEL_PIC_NAME】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ pixel_pic_name }}" data-bs-toggle="modal" data-bs-target="#Modal_pixel">
+                                    <img class="thumbnail_pic" src="{{ pixel_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>PIXELED</div>
+                              <div><a href="{{ pixel_pic_name }}" download="{{ pixel_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【PIXEL_PIC_NAME】-->
+                  <div class="modal fade" id="Modal_pixel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【PIXEL_PIC_NAME】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">ORIGINAL
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ pixel_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  PIXELED
+                                                            </div>
+                                                            <div><a href="{{ pixel_pic_name }}"
+                                                                        download="{{ pixel_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【PIXEL_PIC_NAME】end -->
+
                   <div class="m-3 thumbnail"><a href="{{ pixel_pic_name }}" download="{{ pixel_pic_name }}"><img
                                     class="thumbnail_pic" src="{{ pixel_pic_name }}" alt="qqq"></a></div>
                   <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
