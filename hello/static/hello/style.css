@@ -7,6 +7,17 @@
   height:auto;
 }
 
+.navbar-right{
+  color: white;
+  text-decoration:none;
+  font-size:1.2rem;
+}
+
+.navbar-right:hover{
+  color:white;
+  text-decoration:underline;
+}
+
 .thumbnail{
   overflow: hidden;
 }
@@ -23,7 +34,12 @@
 
 .thumbnail_pic_modal{
 	max-width: 100%;
-	height: auto;  
+	height: auto;
+}
+
+.modal_processed_pic:active{
+  transform: scale(1.5);
+  transition-duration: 0.5s;  
 }
 
 .fa-download:before{

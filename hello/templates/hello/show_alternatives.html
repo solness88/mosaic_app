@@ -8,52 +8,6 @@
       <div class="row">
             <div class="justify-content-center d-flex flex-wrap col">
 
-                  <!-- thumbnail pic 【NORMAL】 -->
-                  <div class="m-3">
-                        <div class="thumbnail">
-                              <a href="{{ original_pic }}" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img class="thumbnail_pic" src="{{ original_pic }}" alt="qqq"
-                                          data-bs-toggle="tooltip" data-bs-html="true" title="オリジナル画像">
-                              </a>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                              <div> </div>
-                              <div>ORIGINAL</div>
-                              <div><a href="{{ pixel_pic_name }}" download="{{ pixel_pic_name }}"
-                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
-                        </div>
-                  </div>
-
-                  <!-- Modal【NORMAL】-->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">;;
-                        <div class="modal-dialog modal-xl">
-                              <div class="modal-content">
-                                    <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-
-                                    <!-- Modal【NORMAL】 content-->
-                                    <div class="modal-body container">
-                                          <div class="d-flex justify-content-around">
-                                                <img src="{{ original_pic }}" alt="qqq" class="m-1 thumbnail_pic_modal">
-                                                <img src="{{ oilpainting_pic_name }}" alt="qqq"
-                                                      class="m-1 thumbnail_pic_modal">
-                                          </div>
-                                          <div class="d-flex justify-content-around">
-                                                <p class="p-2 mt-2 bg-primary text-white rounded">ORIGINAL</p>
-                                                <p class="p-2 mt-2 bg-primary text-white rounded">ORIGINAL</p>
-                                          </div>
-                                    </div>
-
-
-                              </div>
-                        </div>
-                  </div>
-                  <!-- thumbnail pic 【NORMAL】end -->
-
                   <!-- thumbnail pic 【BLACK AND WHITE】start -->
                   <div class="m-3">
                         <div class="thumbnail">
@@ -97,7 +51,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ gray_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">BLACK
@@ -163,7 +117,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ sepia_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">SEPIA
@@ -226,7 +180,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ oilpainting_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">
@@ -245,6 +199,70 @@
                         </div>
                   </div>
                   <!-- thumbnail pic 【OILPAINTING】end -->
+
+                  <!-- thumbnail pic【OILSTRONG】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ oilstrong_pic_name }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_oilstrong">
+                                    <img class="thumbnail_pic" src="{{ oilstrong_pic_name }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>OILPAINTING</div>
+                              <div><a href="{{ oilstrong_pic_name }}" download="{{ oilstrong_pic_name }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
+
+                  <!-- Modal【OILSTRONG】-->
+                  <div class="modal fade" id="Modal_oilstrong" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Modal【OILSTRONG】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">Original
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ oilstrong_pic_name }}" alt="qqq"
+                                                            class="thumbnail_pic_modal modal_processed_pic">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  OILPAINTING
+                                                            </div>
+                                                            <div><a href="{{ oilstrong_pic_name }}"
+                                                                        download="{{ oilstrong_pic_name }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【OILSTRONG】end -->
 
                   <!-- thumbnail pic【EDGE_PRESERVING】start -->
                   <div class="m-3">
@@ -290,7 +308,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ edgepreserving_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">
@@ -354,7 +372,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ detailEnhanced_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">
@@ -417,7 +435,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ pixel_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">
@@ -481,7 +499,7 @@
                                                 </div>
                                                 <div class="m-1">
                                                       <img src="{{ watercolor_pic_name }}" alt="qqq"
-                                                            class="thumbnail_pic_modal">
+                                                            class="thumbnail_pic_modal modal_processed_pic">
                                                       <div class="d-flex justify-content-between">
                                                             <div></div>
                                                             <div class="p-1 mt-2 bg-secondary text-white rounded">
@@ -501,15 +519,76 @@
                   </div>
                   <!-- thumbnail pic 【WATERCOLOR】end -->
 
+                  <!-- thumbnail pic【WATERCOLOR】start -->
+                  <div class="m-3">
+                        <div class="thumbnail">
+                              <a href="{{ watercolor_pic_name2 }}" data-bs-toggle="modal"
+                                    data-bs-target="#Modal_watercolor2">
+                                    <img class="thumbnail_pic" src="{{ watercolor_pic_name2 }}" alt="qqq"
+                                          data-bs-toggle="tooltip" data-bs-html="true"
+                                          title="Click to show larger image">
+                              </a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                              <div> </div>
+                              <div>WATERCOLOR2</div>
+                              <div><a href="{{ watercolor_pic_name2 }}" download="{{ watercolor_pic_name2 }}"
+                                          class="thumbnail_link"><i class="fa-solid fa-download"></i></a></div>
+                        </div>
+                  </div>
 
-                  <div class="m-3 thumbnail"><a href="{{ pixel_pic_name }}" download="{{ pixel_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ pixel_pic_name }}" alt="qqq"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ mosaic_pic_name }}" alt="qqq"></a></div>
-                  <div class="m-3 thumbnail"><a href="{{ mosaic_pic_name }}" download="{{ mosaic_pic_name }}"><img
-                                    class="thumbnail_pic" src="{{ mosaic_pic_name }}" alt="qqq"></a></div>
+                  <!-- Modal【WATERCOLOR】-->
+                  <div class="modal fade" id="Modal_watercolor2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <!-- <h5 class="modal-title" id="exampleModalLabel">BLACK AND WHITE</h5> -->
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
 
+                                    <!-- Modal【WATERCOLOR】 content-->
+                                    <div class="modal-body container">
+                                          <div class="d-flex justify-content-between">
+                                                <div class="m-1">
+                                                      <img src="{{ original_pic }}" alt="qqq"
+                                                            class="thumbnail_pic_modal">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-primary text-white rounded">ORIGINAL
+                                                            </div>
+                                                            <div></div>
+                                                      </div>
+                                                </div>
+                                                <div class="m-1">
+                                                      <img src="{{ watercolor_pic_name2 }}" alt="qqq"
+                                                            class="thumbnail_pic_modal modal_processed_pic">
+                                                      <div class="d-flex justify-content-between">
+                                                            <div></div>
+                                                            <div class="p-1 mt-2 bg-secondary text-white rounded">
+                                                                  WATERCOLOR2
+                                                            </div>
+                                                            <div><a href="{{ watercolor_pic_name2 }}"
+                                                                        download="{{ watercolor_pic_name2 }}"
+                                                                        class="thumbnail_link"><i
+                                                                              class="fa-solid fa-download"></i></a>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- thumbnail pic 【WATERCOLOR】end -->
             </div>
+            <div class="justify-content-center d-flex">
+                  <a href="{% url 'upload' %}">
+                        <button type="button" class="btn btn-primary">Primary</button>
+                  </a>
+            </div>
+
       </div>
 </div>
 

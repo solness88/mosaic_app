@@ -34,6 +34,11 @@ def show_alternatives(request):
     path = settings.MEDIA_ROOT + "/" + str(url)
     original_pic_name = os.path.basename(path)
     img = cv2.imread(path)
+    print(path)
+
+    # resize image if its size is too big
+    if img.shape[1] > 1300:
+        img = functions.resize(img)
 
     # process original image into gray
     img_gray = functions.gray(img)
@@ -51,12 +56,17 @@ def show_alternatives(request):
     img_edgepreserving = functions.edge_preserving(img)
 
     # process original image into like oil-painting
-    img_oilpainting = functions.oil_painting(img)
+    img_oilpainting = functions.oil_strong(img)
+
+    # process original image into like oil-painting
+    img_oilstrong = functions.oil_painting(img)
 
     # process original picture into detail-enhanced
     img_detailEnhanced = functions.detail_enhance(img)
 
     img_watercolor = functions.water_color(img)
+
+    img_watercolor2 = functions.water_color2(img)
 
     #img_manga = functions.manga(img)
 
@@ -70,23 +80,26 @@ def show_alternatives(request):
     processed_pic_mosaic = first_falf_path + "【MOSAIC】" + original_pic_name
     processed_pic_pixel = first_falf_path + "【PIXEL】" + original_pic_name
     processed_pic_oilpainting = first_falf_path + "【OIL】" + original_pic_name
+    processed_pic_oilstrong = first_falf_path + "【OILSTRONG】" + original_pic_name
     processed_pic_edgepreserving = first_falf_path + "【EDGE】" + original_pic_name
     processed_pic_detailEnhanced = first_falf_path + "【DETAIL】" + original_pic_name
     processed_pic_watercolor = first_falf_path + "【WATERCOLOR】" + original_pic_name
-    #processed_pic_manga = first_falf_path + "【MANGA】" + original_pic_name
+    processed_pic_watercolor2 = first_falf_path + "【WATERCOLOR2】" + original_pic_name
 
     # imwrite processed images
+    cv2.imwrite(original_pic_copy, img)
     cv2.imwrite(processed_pic_gray, img_gray)
     cv2.imwrite(processed_pic_sepia, img_sepia)
     cv2.imwrite(processed_pic_mosaic, img_mosaic)
     cv2.imwrite(processed_pic_pixel, img_pixel)
     cv2.imwrite(processed_pic_oilpainting, img_oilpainting)
+    cv2.imwrite(processed_pic_oilstrong, img_oilstrong)
     cv2.imwrite(processed_pic_edgepreserving, img_edgepreserving)
     cv2.imwrite(processed_pic_detailEnhanced, img_detailEnhanced)
     cv2.imwrite(processed_pic_watercolor, img_watercolor)
-    #cv2.imwrite(processed_pic_manga, img_manga)
+    cv2.imwrite(processed_pic_watercolor2, img_watercolor2)
 
-    shutil.copy(settings.MEDIA_ROOT + "/" + str(url), '/Users/hirokoba/workspace/mosaic_app/media/gallery/' + now + "【ORIGINAL】" + original_pic_name, )
+    #shutil.copy(settings.MEDIA_ROOT + "/" + str(url), '/Users/hirokoba/workspace/mosaic_app/media/gallery/' + now + "【ORIGINAL】" + original_pic_name, )
 
     #original_pic_rename = os.rename(path, settings.MEDIA_URL + 'gallery/' + now + "【ORIGINAL】" + original_pic_name)
     original_pic = settings.MEDIA_URL + 'gallery/' + os.path.basename(original_pic_copy)
@@ -95,10 +108,11 @@ def show_alternatives(request):
     mosaic_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_mosaic)
     pixel_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_pixel)
     oilpainting_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilpainting)
+    oilstrong_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_oilstrong)
     edgepreserving_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_edgepreserving)
     detailEnhanced_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_detailEnhanced)
     watercolor_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_watercolor)
-    #manga_pic_name = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_manga)
+    watercolor_pic_name2 = settings.MEDIA_URL + 'gallery/' + os.path.basename(processed_pic_watercolor2)
 
     context = {
         'original_pic': original_pic,
@@ -107,11 +121,13 @@ def show_alternatives(request):
         'mosaic_pic_name': mosaic_pic_name,
         'pixel_pic_name': pixel_pic_name,
         'oilpainting_pic_name': oilpainting_pic_name,
+        'oilstrong_pic_name': oilstrong_pic_name,
         'edgepreserving_pic_name': edgepreserving_pic_name,
         'detailEnhanced_pic_name': detailEnhanced_pic_name,
         'watercolor_pic_name': watercolor_pic_name,
-        #'manga_pic_name': manga_pic_name,
+        'watercolor_pic_name2': watercolor_pic_name2,
     }
 
+    photo.delete()
 
     return render(request, 'hello/show_alternatives.html', context)
